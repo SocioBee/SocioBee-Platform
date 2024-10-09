@@ -1,0 +1,172 @@
+<div style="padding-top: 10px;">
+    <div class="row bottom-border">
+        <div class="col-1">
+            <label for="basic">Thumbnail</label>
+            <div class="image-container">
+                <input type="file" id="selectedFile" style="display: none;" (change)="onFileChanged($event)" />
+                <img width="110" height="100" id="campaign_thumbnail" style="cursor: pointer;"
+                    [src]="campaign.thumbnail || 'assets/images/no_image.jpg'" alt="Campaign Thumbnail"
+                    onclick="document.getElementById('selectedFile').click();" />
+            </div>
+        </div>
+        <div class="col-3 p-fluid p-grid">
+            <div class="p-field">
+                <label for="basic">Title</label>
+                <input [readonly]="readonly_campaign" type="text" class="p-inputtext-sm" pInputText
+                    [(ngModel)]="campaign.title" />
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="p-field">
+                        <label for="basic">Datetime Range</label>
+                        <p-calendar [disabled]="readonly_campaign" [(ngModel)]="datetime_range" class="p-inputtext-sm" [minDate]="minDate"
+                            [showTime]="true" [showIcon]="true" inputId="time" selectionMode="range"></p-calendar>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 p-fluid p-grid">
+            <div class="p-field">
+                <label for="basic">Description</label>
+                <textarea [readonly]="readonly_campaign" [rows]="4" [cols]="30" pInputTextarea class="p-inputtext-sm"
+                    style="resize: none;" [(ngModel)]="campaign.description"></textarea>
+            </div>
+        </div>
+        <div class="col-3 p-fluid p-grid">
+
+        </div>
+        <div class="col-1 status-container">
+            <div [class]="'campaign-badge status-' + campaign.status">
+                {{campaign.status}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2 p-fluid p-grid">
+            <div class="p-field">
+                <label for="basic">City</label>
+                <input [readonly]="readonly_campaign" class="p-inputtext-sm" type="text" pInputText
+                    [(ngModel)]="campaign.city" />
+            </div>
+            <div class="p-field">
+                <label for="basic">Address/District</label>
+                <input [readonly]="readonly_campaign" class="p-inputtext-sm" type="text" pInputText
+                    [(ngModel)]="campaign.address_district" />
+            </div>
+            <div class="p-field">
+                <label for="basic">Postcode</label>
+                <input [readonly]="readonly_campaign" class="p-inputtext-sm" type="text" pInputText
+                    [(ngModel)]="campaign.postcode" />
+            </div>
+            <div class="p-field">
+                <label for="basic">Latitude </label>
+                <input [readonly]="true" type="text" class="p-inputtext-sm" pInputText
+                    [(ngModel)]="campaign.latitude" />
+            </div>
+            <div class="p-field">
+                <label for="basic">Longitude </label>
+                <input [readonly]="true" type="text" class="p-inputtext-sm" pInputText
+                    [(ngModel)]="campaign.longitude" />
+            </div>
+            <div class="p-field">
+                <label for="basic">Radius(m) </label>
+                <input [readonly]="true" type="number" class="p-inputtext-sm" pInputText
+                    [(ngModel)]="campaign.radius" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="map-container">
+                <div class="map-frame">
+                    <div id="campaign_map" #campaign_map>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!readonly_campaign" class="col-2">
+            <div class="small-grey-text">
+                <span style="display:inline-block;">
+                    <i class="pi pi-sitemap"></i>
+                </span>
+                <span style="display:inline-block;">
+                    Run Micro-Volunteering Engine <br>
+                    to view the measurement points in the selected area
+                </span>
+            </div>
+            <div class="margin-input">
+                <label for="cells_distance">Points distance</label>
+                <p-inputNumber [disabled]="readonly_campaign" [(ngModel)]="campaign.cells_distance" [showButtons]="true" buttonLayout="horizontal"
+                    inputId="cells_distance" spinnerMode="horizontal" [min]="min_cells_distance" [step]="5" decrementButtonClass="p-button-danger"
+                    incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus"
+                    decrementButtonIcon="pi pi-minus" suffix="m">
+                </p-inputNumber>
+            </div>
+            <div>
+                <button [disabled]="readonly_campaign" pButton pRipple type="button" label="Run Engine" class="p-button-raised p-button-info"
+                    icon="pi pi-play" iconPos="right" (click)="calculateMeasurementPoints()" [loading]="loading_run_engine"></button>
+            </div>
+            <div style="margin-top: 10px;">
+                <p-listbox [readonly]="readonly_campaign" [options]="all_hives" [(ngModel)]="campaign.hive_id" optionValue="hive_id" optionLabel="name" [listStyle]="{'max-height':'100px'}">
+                    <ng-template pTemplate="header">
+                        Please Select a Hive
+                    </ng-template>
+                    <ng-template let-hive pTemplate="item">
+                        <div class="country-item">
+                            <div>{{hive.name}}, {{hive.location}}</div>
+                        </div>
+                    </ng-template>
+                </p-listbox>
+            </div>
+        </div>
+    </div>
+
+    <div  *ngIf="campaign.status == 'draft' || campaign.status == 'saved'" style="margin-top: 5px;">
+        <div class="center-container">
+            <button *ngIf="!readonly_campaign" pButton label="{{'campaignsPage.save'|translate}}" class="p-button-raised p-button-secondary"
+                style="margin-right: 15px;" (click)="manageCampaign('saved')" [disabled]="loading_manage_campaign"></button>
+            <button *ngIf="!readonly_campaign" pButton label="{{'campaignsPage.publish'|translate}}" class=" p-button-raised p-button-success"
+                style="margin-left: 15px;" (click)="manageCampaign('published')" [disabled]="loading_manage_campaign"></button>
+        </div>
+    </div>
+
+    <div *ngIf="campaign.status == 'proposed'" style="margin-top: 5px;">
+        <div class="center-container">
+            <button pButton label="{{'campaignsPage.decline'|translate}}" class="p-button-raised p-button-danger"
+                style="margin-right: 15px;" (click)="declineCampaign()" [disabled]="loading_manage_campaign"></button>
+            <button pButton label="{{'campaignsPage.publish'|translate}}" class=" p-button-raised p-button-success"
+                style="margin-left: 15px;" (click)="manageCampaign('published')" [disabled]="loading_manage_campaign"></button>
+        </div>
+    </div>
+
+    <div *ngIf="campaign.status == 'published' || campaign.status == 'active' || campaign.status == 'completed'"
+        style="margin-top: 5px;">
+        <div class="row">
+            <div class="col-6">
+                <p-table [value]="campaign.result.participants">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Measurement Points</th>
+                            <th>Feedback</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-participant>
+                        <tr>
+                            <td>{{participant.name}} {{participant.surname}}</td>
+                            <td>{{participant.user_name}}</td>
+                            <td>{{participant.measurement_points}}</td>
+                            <td>Yes</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <p-chart type="bar" [data]="campaign.result.measurements_timeline" [options]="options" height="200"></p-chart>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

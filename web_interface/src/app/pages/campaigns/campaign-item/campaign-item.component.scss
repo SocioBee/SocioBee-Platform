@@ -1,0 +1,86 @@
+.bottom-border {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    margin-bottom: 10px;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.space-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .space-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .space-value {
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        i {
+            font-size: 35px;
+            font-weight: 500;
+            color: blue;
+        }
+    }
+}
+
+:host ::ng-deep {
+.p-card-content{
+    padding: 0 0 0 0;
+}
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .campaign-badge {
+        border-radius: 5px;
+        padding: 0.75em 0.75rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: .3px;
+    }
+}
+
+.map-container {
+    // position: absolute;
+    width: 100%;
+    height: 500px;
+
+    .map-frame {
+        height: 100%;
+
+        #campaign_map {
+            z-index: 2000;
+            height: 100%;
+        }
+    }
+}
+
+.small-grey-text {
+    color: rgba(128, 128, 128, 1);
+    font-size: 12px;
+    text-align: center;
+}
+
+.margin-input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

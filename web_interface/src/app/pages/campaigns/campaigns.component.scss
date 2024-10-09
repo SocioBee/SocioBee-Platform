@@ -1,0 +1,47 @@
+.campaign-badge {
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+}
+
+:host ::ng-deep {
+    .p-progressbar {
+        height: .5rem;
+        background-color: #D8DADC;
+
+        .p-progressbar-value {
+            background-color: #607D8B;
+        }
+    }
+}
+
+:host ::ng-deep .multiselect-custom {
+
+    .p-multiselect-label {
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        display: block;
+        white-space: nowrap;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 13rem;
+    }
+
+    .status-item-value {
+        padding: .25rem .5rem;
+        border-radius: 3px;
+        display: inline-flex;
+        margin-right: .5rem;
+        background-color: var(--primary-color);
+        color: var(--primary-color-text);
+
+    }
+
+    .status-placeholder {
+        padding: 0.25rem;
+    }
+}

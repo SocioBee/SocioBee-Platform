@@ -1,0 +1,45 @@
+<div class="row ">
+  <img style="margin-bottom: 20px;" class="col-8 offset-2" src="assets/images/sociobee_logo.png" alt="SOCIO-BEE Logo">
+  <h3 class="text-center futura font-size-26 bold">
+    {{ "authPage.login" | translate }}
+  </h3>
+  <span class="font-red font-size-13">{{ error }}</span>
+  <br />
+  <form [formGroup]="loginForm" (submit)="login()" novalidate>
+    <input type="text" [placeholder]="'authPage.emailPlaceholder' | translate" formControlName="email"
+      class="form-control" />
+    <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].dirty">
+      Please enter your email
+    </div>
+    <br />
+    <div class="input-group">
+      <input type="password" #passwordField [placeholder]="'authPage.passwordPlaceholder' | translate"
+        formControlName="password" class="form-control" />
+      <div class="input-group-prepend" style="right: 0">
+        <div class="input-group-text" (click)="togglePassword()" style="height: 38px;">
+          <i class="fas fa-eye"></i>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty)">
+      Please enter at least 5 characters
+    </div>
+    <br /><br />
+    <div class="flex-grow-1"></div>
+    <div class="test">
+      <div style="text-align: center;">
+        <div style="display: inline-block;">
+          <p-button type="submit" [label]="'buttons.login'|translate" icon="fas fa-check"
+            [style]="{width: '200px', margin:'5px'}"></p-button>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <div style="display: inline-block;">
+          <button pButton type="button" class="p-button-text"
+            (click)=goToRegistration()>{{'authPage.new_registration'|translate}}</button>
+        </div>
+      </div>
+    </div>
+    <br />
+  </form>
+</div>

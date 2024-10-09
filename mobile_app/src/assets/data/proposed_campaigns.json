@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "type": "proposed",
+        "title": "Rotonda",
+        "image": "https://www.greeka.com/seedo/photos/746/thessaloniki-rotonda-monument-top-1-1280.jpg",
+        "location": "Gounari St. Thessaloniki",
+        "start_date": "10/01/2022",
+        "end_date": "10/10/2022",
+        "start_time": "8:00",
+        "end_time": "11:00",
+        "votes": 9,
+        "is_voted": true,
+        "duration": null,
+        "days_before": null,
+        "lat": "40.632844",
+        "lng": "22.952485",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lobortis turpis ut commodo maximus. Nullam condimentum elementum tortor. Morbi eleifend, lacus quis egestas tristique, augue nisi posuere tortor, eu sagittis lacus ligula aliquam orci. Integer eu dapibus mi. Donec tempus nibh vitae justo varius, et commodo ipsum pulvinar. Suspendisse rutrum tellus sed nisl ultricies, sit amet euismod dolor fermentum."
+    },
+    {
+        "id": 2,
+        "type": "proposed",
+        "title": "Aristotelous",
+        "image": "https://greekreporter.com/wp-content/uploads/2018/12/aristotelous-square-thessaloniki-city-credit-eleni-deli-flickr-cc-by-nc-nd-2.0.jpg",
+        "location": "Aristotelous Square",
+        "start_date": "10/03/2022",
+        "end_date": "10/17/2022",
+        "start_time": "11:00",
+        "end_time": "16:00",
+        "votes": 5,
+        "is_voted": false,
+        "duration": null,
+        "days_before": null,
+        "lat": "40.632656",
+        "lng": "22.941317",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lobortis turpis ut commodo maximus. Nullam condimentum elementum tortor. Morbi eleifend, lacus quis egestas tristique, augue nisi posuere tortor, eu sagittis lacus ligula aliquam orci. Integer eu dapibus mi. Donec tempus nibh vitae justo varius, et commodo ipsum pulvinar. Suspendisse rutrum tellus sed nisl ultricies, sit amet euismod dolor fermentum."
+    }
+]

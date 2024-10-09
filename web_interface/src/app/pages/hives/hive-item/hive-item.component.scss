@@ -1,0 +1,29 @@
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.campaign-badge {
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+}
+
+:host ::ng-deep {
+    .p-progressbar {
+        height: .5rem;
+        background-color: #D8DADC;
+    
+        .p-progressbar-value {
+            background-color: #607D8B;
+        }
+    }
+}
+
+.select-label{
+    font-weight: 600;
+}

@@ -1,0 +1,8 @@
+[
+    { "name": "Saved", "value": "saved" },
+    { "name": "Published", "value": "published" },
+    { "name": "Active", "value": "active" },
+    { "name": "Completed", "value": "completed" },
+    { "name": "Declined", "value": "declined" },
+    { "name": "Proposed", "value": "proposed" }
+  ]

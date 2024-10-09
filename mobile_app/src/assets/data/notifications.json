@@ -1,0 +1,16 @@
+[
+    {
+      "id": 1,
+      "message": "This is a notification for the campaign that you participate the campaign that",
+      "datetime": 1669127679904,
+      "severity": "danger",
+      "action": true
+    },
+    {
+      "id": 2,
+      "message": "This is a notification for the campaign that you participate is a notification",
+      "datetime": 1669127679904,
+      "severity": "warn",
+      "action": false
+    }
+  ]

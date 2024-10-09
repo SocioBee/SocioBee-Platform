@@ -1,0 +1,41 @@
+.new-hive-button{
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.table-header{
+  display: flex;
+  justify-content: space-between
+}
+
+.table-footer{
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .margin-card{
+    margin-bottom: 20px;
+  }
+
+  .campaign-badge {
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+}

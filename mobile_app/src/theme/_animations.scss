@@ -1,0 +1,148 @@
+
+.fadeIn {
+    -webkit-animation: fadeIn 500ms ease-in-out; /* Chrome, Safari, Opera */
+    animation: fadeIn 500ms ease-in-out;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        //-webkit-transform: translateX(-80px);
+    }
+    100% {
+        opacity: 1;
+        //-webkit-transform: translateY(0);
+    }
+}
+
+/* Standard syntax */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        //transform: translateX(-80px);
+    }
+    100% {
+        opacity: 1;
+        //transform: translateY(0);
+    }
+}
+
+
+
+
+.fadeInDown {
+    -webkit-animation: fadeInDown 500ms ease-in-out; /* Chrome, Safari, Opera */
+    animation: fadeInDown 500ms ease-in-out;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+/* Standard syntax */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeInUp {
+    -webkit-animation: fadeInUp 500ms ease-in-out; /* Chrome, Safari, Opera */
+    animation: fadeInUp 500ms ease-in-out;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+/* Standard syntax */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeInLeft {
+    -webkit-animation: fadeInLeft 500ms ease-in-out; /* Chrome, Safari, Opera */
+    animation: fadeInLeft 500ms ease-in-out;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(80px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+/* Standard syntax */
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeInRight {
+    -webkit-animation: fadeInRight 500ms ease-in-out; /* Chrome, Safari, Opera */
+    animation: fadeInRight 500ms ease-in-out;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-80px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+/* Standard syntax */
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

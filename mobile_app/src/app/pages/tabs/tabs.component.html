@@ -1,0 +1,16 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom" color="primary">
+    <ion-tab-button tab="dashboard" (click)="clickTab($event, 'dashboard')">
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-tab-button>    
+    <ion-tab-button tab="campaigns" (click)="clickTab($event, 'campaigns')">
+      <ion-icon name="walk-outline"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="notifications" (click)="clickTab($event, 'notifications')">
+      <ion-icon name="notifications-outline"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="profile" (click)="clickTab($event, 'profile')">
+      <ion-icon name="person-outline"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

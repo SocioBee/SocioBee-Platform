@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.certh.fleet.management",
+               "sha256_cert_fingerprints": ["B7:C4:80:79:87:76:00:92:40:4F:B5:3C:0E:D4:88:E5:25:8A:C4:BC:C7:8F:F3:C3:A8:F7:5E:3F:A7:8F:60:C4"] }
+}]

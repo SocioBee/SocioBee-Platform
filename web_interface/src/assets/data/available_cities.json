@@ -1,0 +1,26 @@
+[
+    {
+      "name": "Athens",
+      "value": "Athens",
+      "lat": "38.056527",
+      "lng": "23.807347"
+    },
+    {
+      "name": "Zaragoza",
+      "value": "Zaragoza",
+      "lat": "41.651803",
+      "lng": "-0.889831"
+    },
+    {
+      "name": "Ancona",
+      "value": "Ancona",
+      "lat": "43.607230",
+      "lng": "13.510296"
+    },
+    {
+      "name": "Thessaloniki",
+      "value": "Thessaloniki",
+      "lat": "40.555352",
+      "lng": "22.996715"
+    }
+  ]

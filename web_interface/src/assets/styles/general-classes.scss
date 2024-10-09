@@ -1,0 +1,103 @@
+.main-content{
+    padding: 16px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.p-panel-title{
+    color: var(--panel-header-color);
+}
+
+.p-panel-header{
+    background-color: white !important;
+}
+
+.p-dialog{
+    max-height: 100% !important;
+    .p-dialog-header{
+        background: #5A0C1C !important;
+        color: white !important;
+        padding: 1.0rem !important;
+        .p-dialog-header-close-icon{
+            color: white !important;
+        }
+    }
+}
+
+
+
+p-columnFilter{
+    vertical-align: middle;
+}
+
+.disabled-icon {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+.center-text{
+    text-align: center;
+}
+
+.alert-message{
+    position: absolute;
+    width: 500px;
+    z-index: 2;
+    right:10px;
+    top:10px;
+  }
+
+.status-draft {
+    background-color: #c8e6c9;
+    color: #256029;
+}
+
+.status-saved {
+    background-color: #b3e5fc;
+    color: #23547b;
+}
+
+.status-proposed{
+    background-color: #eccfff;
+    color: #694382;
+}
+
+.status-published {
+    background-color: #ffcdd2;
+    color: #c63737;
+}
+
+.status-active{
+    background-color: #ffd8b2;
+    color: #805b36;
+}
+
+.status-completed{
+    background-color: #c8e6c9;
+    color: #256029;
+}
+
+.status-declined{
+    background-color: #ffcdd2;
+    color: #c63737;
+}
+
+
+.hive-active{
+    background-color: #c8e6c9;
+    color: #256029;
+}
+
+.hive-inactive{
+    background-color: #ffcdd2;
+    color: #c63737;
+}
+
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

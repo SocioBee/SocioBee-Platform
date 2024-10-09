@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>{{'general.filters' | translate}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancelFilters()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="saveFilters()">
+        <ion-icon name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-list>
+    <ion-list-header mode="ios">
+      <ion-label>{{ 'general.sort_by' | translate}}</ion-label>
+    </ion-list-header>
+    <ion-segment [(ngModel)]="filter_params.sort_by" mode="ios">
+      <ion-segment-button value="most_recent">
+        <ion-label>{{ 'general.most_recent' | translate}}</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="popularity">
+        <ion-label>{{ 'general.popularity' | translate}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header mode="ios">
+      <ion-label>{{ 'general.data_collection' | translate}}</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>{{ 'general.max_duration' | translate}}</ion-label>
+      <ion-input class="ion-text-right" type="number" placeholder="-" [(ngModel)]="filter_params.max_duration">
+      </ion-input>
+      <ion-label class="ion-text-right"> {{ 'general.days' | translate }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'general.time_window' | translate}}</ion-label>
+      <ion-datetime-button datetime="time_from"></ion-datetime-button> - <ion-datetime-button datetime="time_to">
+      </ion-datetime-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'general.area' | translate}}</ion-label>
+      <ion-select placeholder="Select Area" [(ngModel)]="filter_params.area">
+        <ion-select-option value="all">All</ion-select-option>
+        <ion-select-option value="marousi">Marousi</ion-select-option>
+        <ion-select-option value="zaragosa">Zaragosa</ion-select-option>
+        <ion-select-option value="ancona">Ancona</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime id="time_from" [(ngModel)]="filter_params.time_from" presentation="time" hour-cycle="h23"
+      minuteValues="0,15,30,45"></ion-datetime>
+  </ng-template>
+</ion-modal>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime id="time_to" [(ngModel)]="filter_params.time_to" presentation="time" hour-cycle="h23"
+      minuteValues="0,15,30,45"></ion-datetime>
+  </ng-template>
+</ion-modal>

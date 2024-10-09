@@ -1,0 +1,30 @@
+.auth-layout {
+    position: relative;
+    min-height: 100vh;
+    .auth-background {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        // background: url("/assets/images/login-background.webp") no-repeat center center;
+        background: url("/assets/images/auth-background.png") no-repeat center center;
+        
+        background-size: cover;
+    }
+    .auth-form-container {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .inner {
+            border-radius: 25px;
+            width: 600px;
+            max-width: 100%;
+            background: #ffffffee;
+            // min-height: 80vh;
+            padding: 25px;
+        }
+    }
+}

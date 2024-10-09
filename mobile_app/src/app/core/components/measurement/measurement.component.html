@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{'general.measurement' | translate}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeMeasurementModal()">
+        <ion-icon name="close-sharp" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <div class="timer">
+
+    <circle-progress [percent]="complete_percentage" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+      [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"
+      [startFromZero]="false"></circle-progress>
+    <ion-text class="timer-text">{{'general.please_wait_1_min' | translate}}</ion-text>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">
+      <!-- <ion-button [disabled]="!device_connected || data_collection_running" (click)="startDataCollection()">Start Measuring</ion-button> -->
+      <ion-button [disabled]="data_collection_running" (click)="startDataCollection()">Start Measuring</ion-button>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

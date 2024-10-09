@@ -1,0 +1,68 @@
+<app-toolbar [tab_name]="tab_name"></app-toolbar>
+<ion-content color="light" #scrollElement>
+  <ion-segment [(ngModel)]="selectedTab">
+    <ion-segment-button value="volunteering">
+      <ion-label>{{ 'tabs.volunteering' | translate}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="proposed">
+      <ion-label>{{ 'tabs.proposed' | translate}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <div *ngIf="selectedTab == 'volunteering'">
+    <ion-refresher slot="fixed" (ionRefresh)="getVolunteeringCampaigns($event, filter_params.view)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="campaign-list-container">
+      <div *ngFor="let volunteering_campaign of volunteering_campaigns">
+        <app-campaign-item [campaign]="volunteering_campaign" [type]="'participating'"></app-campaign-item>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedTab == 'proposed'">
+    <ion-refresher slot="fixed" (ionRefresh)="getProposedCampaigns($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <img src="assets/images/under_construction.png" alt="under_construction">
+    <!-- <div class="campaign-list-container">
+      <div *ngFor="let  proposed_campaign of proposed_campaigns">
+        <app-campaign-item [campaign]=" proposed_campaign" [type]="'proposed'"></app-campaign-item>
+      </div>
+    </div> -->
+
+  </div>
+
+</ion-content>
+
+<ion-fab *ngIf="selectedTab == 'volunteering'" slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button>
+    <ion-icon name="list-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button (click)="openVolunteeringFilters()">
+      <ion-icon name="funnel-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="openVolunteeringMap()">
+      <ion-icon name="map-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
+
+
+<!-- <ion-fab *ngIf="selectedTab == 'proposed'" slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button>
+    <ion-icon name="list-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button (click)="proposeNewCampaign()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="openProposedFilters()">
+      <ion-icon name="funnel-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="openProposedMap()">
+      <ion-icon name="map-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab> -->

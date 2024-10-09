@@ -1,0 +1,37 @@
+<app-toolbar [tab_name]="tab_name"></app-toolbar>
+<ion-content #scrollElement color="light">
+      <div class="dashboard-content">
+        <div class="map">
+            <div id="dashboardMap" style="width: 100%; height: 100%"></div>
+        </div>
+        <div class="game">
+            <ion-card>
+                <ion-card-content >
+                    <div class="d-flex justify-content-center align-items-center pb-4">
+                        <div class="d-flex align-items-center flex-column">
+                            <span class="game-value"><ion-icon name="trophy-outline" color="success"></ion-icon>{{gamification.points}}</span>
+                            <span class="game-key">{{ 'general.experience_points' | translate }}</span>
+                        </div>                
+                    </div>
+        
+                    <div class="d-flex justify-content-center pb-4 flex-column">
+                        <span class="game-key mb-1">{{ 'general.level' | translate }} {{gamification.level}}</span>
+                        <ion-progress-bar class="game-progress" [value]="gamification.progress" color="success"></ion-progress-bar>
+                    </div>
+        
+                    <div class="d-flex justify-content-around align-items-center">
+                        <div class="d-flex align-items-center flex-column">
+                            <span class="game-value"> <ion-icon name="checkmark-outline" color="success"></ion-icon>{{gamification.campaigns}}</span>
+                            <span class="game-key">{{ 'general.campaigns' | translate }}</span>
+                        </div>         
+                        <div class="d-flex align-items-center flex-column">
+                            <span class="game-value"><ion-icon name="checkmark-outline" color="success"></ion-icon>{{gamification.measurements}}</span>
+                            <span class="game-key">{{ 'general.measurements' | translate }}</span>
+                        </div>          
+                    </div>
+                    
+                </ion-card-content>
+              </ion-card>
+        </div>
+      </div>
+</ion-content>

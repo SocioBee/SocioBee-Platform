@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="col-6 p-fluid p-grid">
+        <div class="p-field">
+            <label for="basic">{{ "hivesPage.status" | translate }}</label>
+            <p-dropdown [readonly]="!can_edit_hive" [options]="all_status" [(ngModel)]="hive.status"
+                placeholder='{{ "hivesPage.select_status" | translate }}'>
+                <ng-template pTemplate="selectedItem">
+                    <div class="status-item status-item-value" *ngIf="hive.status">
+                        <div> {{ "hivesPage." + hive.status | translate }}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-status pTemplate="item">
+                    <div class="status-item">
+                        <div> {{ "hivesPage." + status | translate }}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+        <div class="p-field">
+            <label for="basic">{{ "hivesPage.name" | translate }}</label>
+            <input [readonly]="!can_edit_hive" class="p-inputtext-sm" type="text" pInputText [(ngModel)]="hive.name" />
+        </div>
+        <div class="p-field">
+            <label for="basic">{{ "hivesPage.location" | translate }}</label>
+            <p-dropdown [readonly]="!can_edit_hive" [options]="available_cities" [(ngModel)]="hive.location"
+             placeholder='{{ "hivesPage.select_location" | translate }}' optionLabel="name"  optionValue="value"></p-dropdown>
+            <!-- <input [readonly]="!can_edit_hive" class="p-inputtext-sm" type="text" pInputText
+                [(ngModel)]="hive.location" /> -->
+        </div>
+
+        
+        <div class="p-field">
+            <label for="basic">{{ "hivesPage.description" | translate }}</label>
+            <textarea [readonly]="!can_edit_hive" [rows]="12" [cols]="30" pInputTextarea class="p-inputtext-sm"
+                style="resize: none;" [(ngModel)]="hive.description"></textarea>
+        </div>
+    </div>
+    <div class="col-6 p-fluid p-grid">
+        <div class="p-field">
+            <label for="basic">{{ "hivesPage.queen_bee" | translate }}</label>
+            <p-dropdown [readonly]="!can_edit_hive || !can_edit_qb" [options]="available_bees"
+                [(ngModel)]="hive.queen_bee" placeholder='{{ "hivesPage.select_qb" | translate }}'
+                (onChange)="checkIfCanBeQueen()">
+                <ng-template pTemplate="selectedItem">
+                    <div class="country-item country-item-value" *ngIf="hive.queen_bee">
+                        <span><span class="select-label">{{ "hivesPage.username" | translate }}:</span>
+                            {{hive.queen_bee.user_name}}</span><br>
+                        <span><span class="select-label">{{ "hivesPage.email" | translate }}:</span>
+                            {{hive.queen_bee.email}}</span>
+                    </div>
+                </ng-template>
+                <ng-template let-bee pTemplate="item">
+                    <div class="bee-item">
+                        <span><span class="select-label">{{ "hivesPage.username" | translate }}:</span>
+                            {{bee.user_name}}</span><br>
+                        <span><span class="select-label">{{ "hivesPage.email" | translate }}:</span>
+                            {{bee.email}}</span>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+
+        <div class="p-field">
+            <label for="basic">{{ "hivesPage.worker_bees" | translate }}</label>
+            <p-listbox [readonly]="!can_edit_hive" [options]="available_bees" [(ngModel)]="hive.worker_bees"
+                [metaKeySelection]="true" [checkbox]="true" [filter]="true"
+                filterPlaceHolder="Search by username or email" emptyFilterMessage="No Results" [multiple]="true"
+                [listStyle]="{'max-height':'315px'}" (onChange)="checkIfCanBeWorker()">
+
+                <ng-template let-bee pTemplate="item">
+                    <div class="bee-item">
+                        <span><span class="select-label">{{ "hivesPage.username" | translate }}:</span>
+                            {{bee.user_name}}</span><br>
+                        <span><span class="select-label">{{ "hivesPage.email" | translate }}:</span>
+                            {{bee.email}}</span>
+                    </div>
+                </ng-template>
+            </p-listbox>
+        </div>
+    </div>
+    <div *ngIf="hive.hive_id" class="row">
+        <div class="p-fluid p-grid">
+            <div class="p-field">
+                <label for="basic">{{ "hivesPage.campaigns" | translate }}</label>
+                <p-table [value]="campaigns" styleClass="p-datatable-sm" [paginator]="true" [rows]="3"
+                    responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th></th>
+                            <th pSortableColumn="title">
+                                {{ "hivesPage.title" | translate }}
+                                <p-sortIcon field="title"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="start_datetime">
+                                {{ "hivesPage.start_datetime" | translate }}
+                                <p-sortIcon field="start_datetime"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="end_datetime">
+                                {{ "hivesPage.end_datetime" | translate }}
+                                <p-sortIcon field="end_datetime"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="status">
+                                {{ "hivesPage.status" | translate }}
+                                <p-sortIcon field="status"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="progress">
+                                {{ "hivesPage.progress" | translate }}
+                                <p-sortIcon field="progress"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-campaign>
+                        <tr>
+                            <td>
+                                <img style="margin-left: 10px;" width="50" height="50" src="{{campaign.thumbnail}}"
+                                    alt="campaign-img">
+                            </td>
+                            <td>
+                                {{campaign.title}}
+                            </td>
+                            <td>
+                                <span>{{campaign.start_datetime | date: 'dd/MM/yyyy hh:mm'}}</span>
+                            </td>
+                            <td>
+                                <span>{{campaign.end_datetime | date: 'dd/MM/yyyy hh:mm'}}</span>
+                            </td>
+                            <td>
+                                <span [class]="'campaign-badge status-' + campaign.status">{{campaign.status}}</span>
+                            </td>
+                            <td>
+                                <p-progressBar [value]="campaign.progress" [showValue]="false"></p-progressBar>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+    </div>
+    <div class="center-container" style="margin-top: 10px;">
+        <button pButton label="{{'hivesPage.cancel'|translate}}" class="p-button-raised p-button-secondary"
+            style="margin-right: 15px;" (click)="cancelHive()" [disabled]="loading_save_hive"></button>
+        <button pButton label="{{'hivesPage.save'|translate}}" class=" p-button-raised p-button-success"
+            style="margin-left: 15px;" (click)="saveHive()" [disabled]="loading_save_hive"></button>
+    </div>
+</div>

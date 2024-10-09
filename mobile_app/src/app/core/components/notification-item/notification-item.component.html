@@ -1,0 +1,18 @@
+<div class="notification-item">
+    <ion-grid>
+        <ion-row  class="ion-align-items-center">
+            <ion-col size="2">
+                <ion-icon class="icon warn" *ngIf="notification.severity == 'warn'" name="notifications-outline"></ion-icon>
+                <ion-icon class="icon danger" *ngIf="notification.severity == 'danger'" name="alert-circle-outline"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <span>{{notification.message}}</span><br>
+                <small class="datetime">{{notification.datetime | date: 'dd/MM/yyyy HH:mm'}}</small>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="notification.action" class="ion-justify-content-center">
+            <ion-button expand="fill" size="default">Start</ion-button>
+        </ion-row>
+    </ion-grid>
+
+</div>

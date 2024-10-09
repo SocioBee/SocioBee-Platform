@@ -1,0 +1,147 @@
+<div class="row">
+    <div class="d-flex flex-column col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <span class="colunm-title">{{ 'dashboardPage.active_campaigns' | translate }}</span>
+        <div class="card-options">
+            <p-card>
+                <div class="row analytics-container">
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <span class="analytics-title">{{ 'dashboardPage.campaigns' | translate }} <i
+                                class="fas fa-route fa-fw"></i></span>
+                        <span class="analytics-value">{{active_campaigns.total | number: '1.0-2'}} <span class="analytics-value-explain">
+                                {{ 'dashboardPage.active' | translate }}</span></span>
+                        <!-- <span class="analytics-value">{{active_campaigns.cities}} <span class="analytics-value-explain"> {{ 'dashboardPage.cities' | translate }}</span></span> -->
+                    </div>
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <span class="analytics-title">{{ 'dashboardPage.participants' | translate }} <i
+                                class="fas fa-users fa-fw"></i></span>
+                        <span class="analytics-value">{{active_campaigns.tot_participants | number: '1.0-2'}} <span
+                                class="analytics-value-explain"> {{ 'dashboardPage.total' | translate }}</span></span>
+                        <span class="analytics-value">{{active_campaigns.avg_participants | number: '1.0-2'}} <span
+                                class="analytics-value-explain">{{ 'dashboardPage.avg_per_campaign' | translate
+                                }}</span></span>
+                    </div>
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <span class="analytics-title">{{ 'dashboardPage.invited' | translate }} <i
+                                class="fas fa-bullhorn fa-fw"></i></span>
+                        <span class="analytics-value">{{active_campaigns.tot_invited_users | number: '1.0-2'}} <span
+                                class="analytics-value-explain"> {{ 'dashboardPage.total' | translate }}</span></span>
+                        <span class="analytics-value">{{active_campaigns.avg_invited_users | number: '1.0-2'}} <span
+                                class="analytics-value-explain">{{ 'dashboardPage.avg_per_campaign' | translate
+                                }}</span></span>
+                    </div>
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <span class="analytics-title">{{ 'dashboardPage.measurements' | translate }} <i
+                                class="fas fa-database fa-fw"></i></span>
+                        <span class="analytics-value">{{active_campaigns.tot_measurements | number: '1.0-2'}} <span
+                                class="analytics-value-explain"> {{ 'dashboardPage.total' | translate }}</span></span>
+                        <span class="analytics-value">{{active_campaigns.avg_measurements | number: '1.0-2'}} <span
+                                class="analytics-value-explain"> {{ 'dashboardPage.avg_per_campaign' | translate
+                                }}</span></span>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+        <div class="map-container">
+            <div class="map-frame">
+                <div id="map" #map>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <span class="colunm-title">{{ 'dashboardPage.completed_campaigns' | translate }}</span>
+        <div class="card-options">
+            <p-card>
+                <div class="row analytics-container">
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <label>{{ 'dashboardPage.from' | translate }}</label>
+                        <p-calendar [(ngModel)]="from_date" dateFormat="yy-mm-dd" [showIcon]="true"
+                            class="p-inputtext-sm"></p-calendar>
+                    </div>
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <label>{{ 'dashboardPage.to' | translate }}</label>
+                        <p-calendar [(ngModel)]="to_date" dateFormat="yy-mm-dd" [showIcon]="true"
+                            class="p-inputtext-sm"></p-calendar>
+                    </div>
+                    <div class="col-lg-3 col-12 analytics-item">
+
+                    </div>
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <button pButton pRipple type="button" label="{{ 'dashboardPage.filter' | translate }}"
+                            class="p-button-raised p-button-info" (click)="getCompletedCampaigns()"></button>
+                    </div>
+                </div>
+
+
+            </p-card>
+        </div>
+
+        <div class="card-options">
+            <p-card>
+                <div class="row analytics-container">
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <span class="analytics-title">{{ 'dashboardPage.campaigns' | translate }} <i
+                                class="fas fa-route fa-fw"></i></span>
+                        <span class="analytics-value">{{completed_campaigns.total | number: '1.0-2'}} <span
+                                class="analytics-value-explain"> {{ 'dashboardPage.completed' | translate
+                                }}</span></span>
+                        <!-- <span class="analytics-value">{{completed_campaigns.cities}} <span class="analytics-value-explain"> {{ 'dashboardPage.cities' | translate }}</span></span> -->
+                    </div>
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <span class="analytics-title">{{ 'dashboardPage.participants' | translate }} <i
+                                class="fas fa-users fa-fw"></i></span>
+                        <span class="analytics-value">{{completed_campaigns.tot_participants | number: '1.0-2'}} <span
+                                class="analytics-value-explain"> {{ 'dashboardPage.total' | translate }}</span></span>
+                        <span class="analytics-value">{{completed_campaigns.avg_participants | number: '1.0-2'}} <span
+                                class="analytics-value-explain">{{ 'dashboardPage.avg_per_campaign' | translate
+                                }}</span></span>
+                    </div>
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <span class="analytics-title">{{ 'dashboardPage.invited' | translate }} <i
+                                class="fas fa-bullhorn fa-fw"></i></span>
+                        <span class="analytics-value">{{completed_campaigns.tot_invited_users | number: '1.0-2'}} <span
+                                class="analytics-value-explain"> {{ 'dashboardPage.total' | translate }}</span></span>
+                        <span class="analytics-value">{{completed_campaigns.avg_invited_users | number: '1.0-2'}} <span
+                                class="analytics-value-explain">{{ 'dashboardPage.avg_per_campaign' | translate
+                                }}</span></span>
+                    </div>
+                    <div class="col-lg-3 col-12 analytics-item">
+                        <span class="analytics-title">{{ 'dashboardPage.measurements' | translate }} <i
+                                class="fas fa-database fa-fw"></i></span>
+                        <span class="analytics-value">{{completed_campaigns.tot_measurements | number: '1.0-2'}} <span
+                                class="analytics-value-explain"> {{ 'dashboardPage.total' | translate }}</span></span>
+                        <span class="analytics-value">{{completed_campaigns.avg_measurements | number: '1.0-2'}} <span
+                                class="analytics-value-explain"> {{ 'dashboardPage.avg_per_campaign' | translate
+                                }}</span></span>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+
+        <div class="card-options">
+            <p-card>
+                <div style="display: flex; justify-content: space-between;">
+                    <p-dropdown [options]="data_types" optionLabel="name" class="p-inputtext-sm"
+                        [(ngModel)]="selected_data_type_1" (onChange)="onChart1Changed()"></p-dropdown>
+                    <p-dropdown [options]="chart_types" optionLabel="name" class="p-inputtext-sm"
+                        [(ngModel)]="selected_chart_type_1" (onChange)="onChart1Changed()"></p-dropdown>
+                </div>
+                <p-chart #chart1 [type]="selected_chart_type_1.value" [data]="selected_data_1" [options]="options"
+                    height="180"></p-chart>
+            </p-card>
+        </div>
+
+        <div class="card-options">
+            <p-card>
+                <div style="display: flex; justify-content: space-between;">
+                    <p-dropdown [options]="data_types" optionLabel="name" class="p-inputtext-sm"
+                        [(ngModel)]="selected_data_type_2" (onChange)="onChart2Changed()"></p-dropdown>
+                    <p-dropdown [options]="chart_types" optionLabel="name" class="p-inputtext-sm"
+                        [(ngModel)]="selected_chart_type_2" (onChange)="onChart2Changed()"></p-dropdown>
+                </div>
+                <p-chart #chart2 [type]="selected_chart_type_2.value" [data]="selected_data_2" [options]="options"
+                    height="180"></p-chart>
+            </p-card>
+        </div>
+    </div>
+</div>

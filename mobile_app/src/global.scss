@@ -1,0 +1,264 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import "../node_modules/leaflet/dist/leaflet.css";
+@import "../node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css";
+
+/* Custom styles that apply to the entire project */
+ion-button {
+    text-transform: none;
+}
+
+ion-card {
+
+    ion-card-header,
+    ion-card-content {
+        ion-item {
+            --background: var(--ion-card-background);
+        }
+    }
+}
+
+ion-card {
+    ion-card-header {
+        &.widget-card-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--ion-card-border-color);
+        }
+    }
+}
+
+.form-control {
+    border-color: var(--ion-card-border-color);
+    background: unset;
+
+    &:focus {
+        background: unset;
+    }
+}
+
+.unset-background {
+    background: unset !important;
+}
+
+ion-chip.only-icon {
+    padding-inline: 7px;
+
+    ion-icon {
+        margin-inline: unset;
+    }
+}
+
+
+
+
+/* Hack to trigger ion-select from ion-item */
+ion-select.hide-select-button::part(icon),
+ion-select.hide-select-button::part(text) {
+    display: none;
+}
+
+.action-sheet-selected.sc-ion-action-sheet-ios {
+    color: var(--button-color-selected);
+}
+
+.action-sheet-button.sc-ion-action-sheet-ios {
+    color: var(--ion-text-color);
+}
+
+
+/* Hack the mwl-calendar views */
+
+mwl-calendar-month-view {
+    .cal-month-view {
+        background-color: var(--ion-background-color);
+
+        color: var(--ion-text-color);
+
+        a {
+            color: tomato;
+        }
+
+        .cal-open-day-events {
+            //background-color: #{nb-theme(layout-background-color)};
+            background-color: #151a30;
+        }
+
+        .cal-cell-row {
+            &:hover {
+                background-color: transparent;
+            }
+
+            &:last-child {
+                border: none;
+            }
+        }
+
+        .cal-header {
+            font-weight: 400;
+
+            .cal-cell {
+                border-bottom: 2px solid var(--ion-border-color);
+                padding: 1rem;
+                cursor: default;
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+
+        .cal-cell {
+            &:hover {
+                background-color: var(--ion-card-background);
+            }
+
+            cursor: pointer;
+            padding: 0.25rem;
+
+            &.cal-event-highlight,
+            &.cal-cell.cal-has-events.cal-open {
+                background-color: var(--ion-card-background) !important;
+            }
+        }
+
+        .cal-day-cell,
+        .cal-cell-top {
+            min-height: unset;
+        }
+
+        .cal-cell-top {
+            text-align: center;
+
+            >span {
+                display: flex;
+                flex-direction: column-reverse;
+                flex: 1;
+            }
+        }
+
+        .cal-day-number {
+            margin: 0;
+            float: unset;
+            flex: 1;
+        }
+
+        .cal-day-badge {
+            margin: 0;
+            background-color: var(--ion-card-background);
+            color: var(--ion-text-color);
+            opacity: 0.8;
+        }
+
+        .cal-day-cell {
+            min-height: 5rem;
+
+            &:not(:last-child) {
+                border-right: 1px solid var(--ion-border-color);
+            }
+
+            &.cal-weekend {
+                .cal-day-number {
+                    color: unset;
+                }
+            }
+
+            &.cal-today {
+                background-color: var(--ion-color-primary);
+
+                .cal-day-number {
+                    font-size: 1.2em;
+                    color: var(--ion-color-primary-contrast);
+                }
+            }
+        }
+
+        .cal-days {
+            border: none;
+            border-left: 1px solid var(--ion-border-color);
+            border-right: 1px solid var(--ion-border-color);
+
+            .cal-cell-row {
+                border-bottom: 1px solid var(--ion-border-color);
+
+                &:last-child {
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+/* Helper Classes */
+small,
+.small {
+    font-size: 80% !important;
+    font-weight: 400 !important;
+}
+
+.large-text {
+    font-size: 28px !important;
+}
+
+.x-large-text {
+    font-size: 32px !important;
+}
+
+.xx-large-text {
+    font-size: 48px !important;
+}
+
+.small-modal {
+    --height: 80%;
+    --width: 90%;
+    --border-radius: 15px;
+
+}
+
+.extra-small-modal{
+    --height: 30%;
+    --width: 90%;
+    --border-radius: 15px;
+}
+
+.inner-toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background: white;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  }
+
+  .campaign-list-container{
+    margin-bottom: 75px;
+  }
+
+  .no-scroll {
+    --overflow: hidden;
+}

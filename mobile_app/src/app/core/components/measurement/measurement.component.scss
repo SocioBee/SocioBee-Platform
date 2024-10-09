@@ -1,0 +1,20 @@
+.timer{
+    margin-top: 20%;
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    .timer-text{
+        color: lightgreen;
+    }
+}
+
+.info{
+    font-size: small;
+    color: #3880ff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

@@ -1,0 +1,55 @@
+.colunm-title{
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 500;
+
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  .map-frame {
+    height: 100%;
+
+    #map {
+      z-index: 1;
+      height: 100%;
+    }
+  }
+}
+
+:host ::ng-deep .p-card-content{
+  padding: 0.5rem 1rem 0.5rem 1rem !important; 
+}
+
+
+.card-options {
+  margin-bottom: 10px;
+  .analytics-container {
+    // display: flex;
+    // justify-content: analytics-between;
+    flex-direction: row;
+
+    .analytics-item {
+      display: flex;
+      flex-direction: column;
+      // align-items: center;
+      justify-content: center;
+
+      .analytics-title {
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .analytics-value {
+        font-size: 20px;
+        font-weight: 500;
+        .analytics-value-explain {
+          font-size: 15px;
+          color: gray;
+        }
+      }
+    }
+  }
+}
+
+

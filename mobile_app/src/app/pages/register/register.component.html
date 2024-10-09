@@ -1,0 +1,99 @@
+<ion-content id="register">
+  <img class="col-8 offset-2" src="assets/images/logo.png" alt="sociobee Logo">
+  <div class="content-wrapper-center">
+    <form class="ion-padding" #registerForm="ngForm" novalidate>
+      <ion-item lines="full">
+        <ion-input [(ngModel)]="register.name" name="name" type="text" placeholder="{{ 'general.name' | translate }}"
+          spellcheck="false" autocapitalize="off" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-input [(ngModel)]="register.surname" name="surname" type="text"
+          placeholder="{{ 'general.surname' | translate }}" spellcheck="false" autocapitalize="off"
+          required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-input [(ngModel)]="register.email" name="username" type="email"
+          placeholder="{{ 'general.email' | translate }}" spellcheck="false" autocapitalize="off" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-input [(ngModel)]="register.user_name" name="user_name" type="text"
+          placeholder="{{ 'general.user_name' | translate }}" spellcheck="false" autocapitalize="off"
+          required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label>Birthday</ion-label>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime presentation="date" id="datetime" (ionChange)="handleBirthdayChange($event)"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label>{{ 'general.city' | translate }}</ion-label>
+        <ion-list>
+          <ion-item>
+            <ion-select aria-label="fruit" (ionChange)="handleCityChange($event)"
+              placeholder="{{ 'general.select_city' | translate }}">
+              <ion-select-option *ngFor="let city of available_cities"
+                value="{{city.value}}">{{city.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label>{{ 'general.gender' | translate }}</ion-label>
+        <ion-list>
+          <ion-item>
+            <ion-select aria-label="fruit" (ionChange)="handleGenderChange($event)"
+              placeholder="{{ 'general.select_gender' | translate }}">
+              <ion-select-option *ngFor="let gender of available_genders"
+                value="{{gender.value}}">{{gender.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-input [(ngModel)]="register.password" name="password" placeholder="{{ 'general.password' | translate }}"
+          #password="ngModel" spellcheck="false" autocapitalize="off" [type]="getType1()" required></ion-input>
+        <ion-icon *ngIf="isActiveToggleTextPassword1" name="eye" color="success" slot="end"
+          (click)="toggleTextPassword1()"></ion-icon>
+        <ion-icon *ngIf="!isActiveToggleTextPassword1" name="eye-off-sharp" color="primary" slot="end"
+          (click)="toggleTextPassword1()"></ion-icon>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-input [(ngModel)]="register.password_verify" name="password_verify"
+          placeholder="{{ 'general.password_verify' | translate }}" #password="ngModel" spellcheck="false"
+          autocapitalize="off" [type]="getType2()" required></ion-input>
+        <ion-icon *ngIf="isActiveToggleTextPassword2" name="eye" color="success" slot="end"
+          (click)="toggleTextPassword2()"></ion-icon>
+        <ion-icon *ngIf="!isActiveToggleTextPassword2" name="eye-off-sharp" color="primary" slot="end"
+          (click)="toggleTextPassword2()"></ion-icon>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-grid>
+          <ion-row class="ion-padding-top">
+            <ion-col>
+              <ion-button (click)="onRegister(registerForm)" size="default" color="primary" expand="block" fill="solid"
+                [disabled]="registerForm.invalid">
+                <ion-text>{{ 'general.register' | translate }}</ion-text>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-grid>
+          <ion-row class="ion-padding-top">
+            <ion-col>
+              <ion-text><small>{{ 'general.already_account' | translate }}</small></ion-text>
+              <ion-button (click)="goToLogin()" size="default" color="light" expand="block">
+                <ion-text>{{ 'general.login' | translate }}</ion-text>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </form>
+  </div>
+</ion-content>

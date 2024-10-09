@@ -1,0 +1,25 @@
+.game-value{
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 2rem;
+}
+
+.game-key{
+    font-size: 1rem;
+    line-height: 1rem;
+
+}
+.game-progress{
+    height: 15px;
+    border-radius: 8px;
+}
+
+.dashboard-content{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .map{
+        flex: 1;
+
+    }
+}

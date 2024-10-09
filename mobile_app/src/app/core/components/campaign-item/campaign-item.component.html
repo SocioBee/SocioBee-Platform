@@ -1,0 +1,60 @@
+<div class="campaign-item">
+  <ion-grid >
+    <ion-row class="header">
+      <ion-col size="2">
+        <ion-thumbnail>
+          <img src="{{campaign.thumbnail}}" alt="campaign-img">
+        </ion-thumbnail>
+      </ion-col>
+      <ion-col size="8">
+        <strong>{{campaign.title}}</strong><br>
+        <small>{{ 'general.created_at' | translate }} {{campaign.created_at | date: 'dd/MM/yyyy'}}</small>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button fill="clear" (click)="goToCampaign()">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="auto"><ion-icon name="map-outline"></ion-icon></ion-col>
+      <ion-col>{{campaign.city}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="auto"><ion-icon name="location-outline"></ion-icon></ion-col>
+      <ion-col>{{campaign.address_district}}, {{campaign.postcode}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="auto"><ion-icon name="calendar-outline"></ion-icon></ion-col>
+      <ion-col>{{campaign.duration}} {{ 'general.days' | translate }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="auto">
+        <ion-icon name="time-outline"></ion-icon>
+      </ion-col>
+      <ion-col>{{campaign.start_datetime | date: 'dd/MM/yyyy hh:mm'}} - {{campaign.end_datetime | date: 'dd/MM/yyyy hh:mm'}}</ion-col>
+    </ion-row>
+    <ion-row *ngIf="type=='proposed'" class="footer ion-align-items-center">
+      <ion-col size="10" class="footer-left">
+        <span>{{campaign.votes}} Votes</span>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button fill="clear" (click)="voteCampaign()">
+          <ion-icon *ngIf="!campaign.is_voted" name="heart-outline"></ion-icon>
+          <ion-icon *ngIf="campaign.is_voted" name="heart"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="type=='participating'" class="footer ion-justify-content-end">
+      <ion-col size="auto">
+        <ion-text *ngIf="campaign.status == 'saved'" color="tertiary">{{ 'general.saved' | translate}}</ion-text>
+        <ion-text *ngIf="campaign.status == 'published'" color="success">{{ 'general.published' | translate}}</ion-text>
+        <ion-text *ngIf="campaign.status == 'active'" color="danger">{{ 'general.active' | translate}}</ion-text>
+        <ion-text *ngIf="campaign.status == 'completed'" color="danger">{{ 'general.completed' | translate}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+</div>

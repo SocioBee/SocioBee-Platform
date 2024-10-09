@@ -1,0 +1,54 @@
+<ion-toolbar color="primary">
+  <ion-buttons slot="start">
+    <ion-button (click)="goBack()">
+      <ion-icon name="arrow-back-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>{{campaign.title}}</ion-title>
+</ion-toolbar>
+<ion-content>
+  <div id="campaignMapArea" style="width: 100%; height: 70%">
+  </div>
+  <ion-grid>
+    <ion-row class="campaign-item">
+      <ion-col size="2">
+        <ion-thumbnail>
+          <img src="{{campaign.thumbnail}}" alt="campaign-img">
+        </ion-thumbnail>
+      </ion-col>
+      <ion-col>
+        <strong>{{campaign.title}}</strong><br>
+        <small class="grey-color">{{ 'general.created_at' | translate}} {{campaign.created_at | date: 'dd/MM/yyyy'}}
+        </small>
+      </ion-col>
+      <ion-col *ngIf="campaign.status == 'active'" size="3">
+        <ion-button *ngIf="!showVoluneerAbort" color="primary" size="small" expand="block" (click)="checkIfHasConnectedDevice()">{{ 'general.participate' | translate}}</ion-button>
+        <ion-button *ngIf="showVoluneerAbort" color="danger" size="small" expand="block" (click)="abortVoluneer()">{{ 'general.abort' | translate}}</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="campaign-item">
+      <ion-col size="auto"><ion-icon name="map-outline"></ion-icon></ion-col>
+      <ion-col>{{campaign.city}}</ion-col>
+    </ion-row>
+    <ion-row class="campaign-item">
+      <ion-col size="auto"><ion-icon name="location-outline"></ion-icon></ion-col>
+      <ion-col>{{campaign.address_district}}, {{campaign.postcode}}</ion-col>
+    </ion-row>
+    <ion-row class="campaign-item">
+      <ion-col size="auto"><ion-icon name="calendar-outline"></ion-icon></ion-col>
+      <ion-col>{{campaign.duration}} {{ 'general.days' | translate }}</ion-col>
+    </ion-row>
+    <ion-row class="campaign-item">
+      <ion-col size="auto">
+        <ion-icon name="time-outline"></ion-icon>
+      </ion-col>
+      <ion-col>{{campaign.start_datetime | date: 'dd/MM/yyyy hh:mm'}} - {{campaign.end_datetime | date: 'dd/MM/yyyy hh:mm'}}</ion-col>
+    </ion-row>
+    <ion-row class="campaign-item">
+      <ion-col size="10">{{ 'general.description' | translate }}</ion-col>
+      <ion-col class="grey-color">{{campaign.description}}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

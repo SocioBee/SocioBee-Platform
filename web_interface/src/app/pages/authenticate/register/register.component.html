@@ -1,0 +1,103 @@
+<img style="margin-bottom: 20px;" class="col-8 offset-2" src="assets/images/sociobee_logo.png" alt="SDN Logo">
+<h3 class="text-center futura font-size-26 bold">
+  {{ "authPage.register" | translate }}
+</h3>
+<span class="font-red font-size-13">{{ error }}</span>
+<br />
+<form [formGroup]="registerForm" (submit)="register()" novalidate>
+  <div class="row">
+    <div class="col-6 p-mb-3">
+      <input type="text" [placeholder]="'authPage.namePlaceholder' | translate" formControlName="name"
+        class="form-control" />
+      <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].dirty">
+        {{'authPage.pls_enter_fn'|translate}}
+      </div>
+    </div>
+    <div class="col-6 p-mb-3">
+      <input type="text" [placeholder]="'authPage.surnamePlaceholder' | translate" formControlName="surname"
+        class="form-control" />
+      <div *ngIf="registerForm.controls['surname'].invalid && registerForm.controls['surname'].dirty">
+        {{'authPage.pls_enter_ln'|translate}}
+      </div>
+    </div>
+    <div class="col-6 p-mb-3">
+      <input type="text" [placeholder]="'authPage.emailPlaceholder' | translate" formControlName="email"
+        class="form-control" />
+      <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].dirty">
+        {{'authPage.pls_enter_e'|translate}}
+      </div>
+    </div>
+    <div class="col-6 p-mb-3">
+      <input type="text" [placeholder]="'authPage.usernamePlaceholder' | translate" formControlName="username"
+        class="form-control" />
+      <div *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].dirty">
+        {{'authPage.pls_enter_fn'|translate}}
+      </div>
+    </div>
+    <div class="col-4 p-mb-3">
+      <p-calendar [placeholder]="'authPage.birthdayPlaceholder' | translate" [maxDate]="maxDate" [monthNavigator]="true"
+        [yearNavigator]="true" yearRange="1900:2023" formControlName="birthday" [showIcon]="true"
+        dateFormat="dd/mm/yy"></p-calendar>
+      <div *ngIf="registerForm.controls['birthday'].invalid && registerForm.controls['birthday'].dirty">
+        {{'authPage.pls_enter_brth'|translate}}
+      </div>
+    </div>
+    <div class="col-4 p-mb-3">
+      <p-dropdown [options]="available_cities" [placeholder]="'authPage.cityPlaceholder'| translate" optionLabel="name"
+        optionValue="value" formControlName="city" [showClear]="true" [style]="{'width':'100%'}"></p-dropdown>
+
+      <div *ngIf="registerForm.controls['city'].invalid && registerForm.controls['city'].dirty">
+        {{'authPage.pls_enter_city'|translate}}
+      </div>
+    </div>
+    <div class="col-4 p-mb-3">
+      <p-dropdown [options]="available_genders" [placeholder]="'authPage.genderPlaceholder'| translate"
+        optionLabel="name" optionValue="value" formControlName="gender" [showClear]="true"
+        [style]="{'width':'100%'}"></p-dropdown>
+      <div *ngIf="registerForm.controls['gender'].invalid && registerForm.controls['gender'].dirty">
+        {{'authPage.pls_enter_gender'|translate}}
+      </div>
+    </div>
+    <div class="col-6 p-mb-3">
+      <div class="input-group">
+        <input type="password" #passwordFieldRegister [placeholder]="'authPage.passwordPlaceholder' | translate"
+          formControlName="password" class="form-control" />
+        <div class="input-group-prepend" style="right: 0">
+          <div class="input-group-text" (click)="togglePassword()" style="height: 38px;">
+            <i class="fas fa-eye"></i>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty)">
+        {{'authPage.pls_enter_al5c'|translate}}
+      </div>
+    </div>
+    <div class="col-6 p-mb-3">
+      <div class="input-group">
+        <input type="password" #passwordFieldRegisterVerification
+          [placeholder]="'authPage.passwordPlaceholderVerification' | translate" formControlName="password_verify"
+          class="form-control" />
+        <div class="input-group-prepend" style="right: 0">
+          <div class="input-group-text" (click)="togglePasswordVerification()" style="height: 38px;">
+            <i class="fas fa-eye"></i>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="registerForm.controls['password_verify'].invalid && (registerForm.controls['password_verify'].dirty)">
+        {{'authPage.pls_enter_al5c'|translate}}
+      </div>
+      <div
+        *ngIf="registerForm.controls['password'].valid &&registerForm.controls['password_verify'].valid && !arePasswordEqual()">
+        {{'authPage.pls_type_tsp'|translate}}
+      </div>
+    </div>
+    <div class="col-12 center-container">
+      <p-button type="submit" [label]="'buttons.register'|translate" icon="fas fa-check"
+        [style]="{width: '200px', margin:'5px'}" [loading]="loading_register"></p-button>
+    </div>
+    <div class="col-12 center-container">
+      <button pButton type="button" class="p-button-text"
+        (click)=goToLogin()>{{'authPage.back_to_login'|translate}}</button>
+    </div>
+  </div>
+</form>

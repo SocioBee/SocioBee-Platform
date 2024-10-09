@@ -1,0 +1,91 @@
+<p-table #dt1 [value]="hives" styleClass="p-datatable-sm" [paginator]="true" [rows]="10" 
+[showCurrentPageReport]="true" responsiveLayout="scroll" 
+currentPageReportTemplate="{{ 'general.showing' | translate }} {first} {{ 'general.to' | translate }} {last} {{ 'general.of' | translate }} {totalRecords} {{ 'general.entries' | translate }}"
+[rowsPerPageOptions]="[5, 10,25,50]" selectionMode="single" 
+[globalFilterFields]="['hive_id', 'name', 'created_at', 'created_by', 'beekeeper_user_name', 'beekeeper_email']">
+    <ng-template pTemplate="caption">
+        <div>
+            <div class="d-md-inline p-2">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="tableSearchKeyword"
+                        (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                        [placeholder]="'campaignsPage.search'|translate" />
+                </span>
+            </div>
+            <div *ngIf="can_create_hive" class="float-md-end">
+                <button pButton label="{{'campaignsPage.create'|translate}}" class="p-button-success" icon="pi pi-plus"
+                    (click)="createHive()"></button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th></th>
+            <th pSortableColumn="hive_id">
+                {{ "hivesPage.hive_id" | translate }}
+                <p-sortIcon field="hive_id"></p-sortIcon>
+            </th>
+            <th pSortableColumn="name">
+                {{ "hivesPage.name" | translate }}
+                <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="location">
+                {{ "hivesPage.location" | translate }}
+                <p-sortIcon field="location"></p-sortIcon>
+            </th>
+            <th pSortableColumn="created_at">
+                {{ "hivesPage.created_at" | translate }}
+                <p-sortIcon field="created_at"></p-sortIcon>
+            </th>
+            <th pSortableColumn="beekeeper_user_name">
+                {{ "hivesPage.beekeeper_user_name" | translate }}
+                <p-sortIcon field="beekeeper_user_name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="my_role">
+                {{ "hivesPage.my_role" | translate }}
+                <p-sortIcon field="my_role"></p-sortIcon>
+            </th>
+            <th pSortableColumn="status">
+                {{ "hivesPage.status" | translate }}
+                <p-sortIcon field="status"></p-sortIcon>
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-hive>
+        <tr>
+            <td></td>
+            <td>
+                <span>#{{hive.hive_id}}</span>
+            </td>
+            <td>
+                <span>{{hive.name}}</span>
+            </td>
+            <td>
+                <span>{{hive.location}}</span>
+            </td>
+            <td>
+                <span>{{hive.created_at | date: 'MM/dd/yyyy'}}</span>
+            </td>
+            <td>
+                <span>{{hive.beekeeper_user_name}}</span>
+            </td>
+            <td>
+                <span> {{ "hivesPage." + hive.my_role | translate }}</span>
+            </td>
+            <td>
+                <span [class]="'campaign-badge hive-' + hive.status">{{hive.status}}</span>
+            </td>
+            <td>
+                <span style="float: right">
+                    <button pButton type="button" icon="pi pi-eye"
+                        class="p-button-rounded p-button-secondary p-button-text p-button-sm"
+                        (click)="openHive(hive)"></button>
+                </span>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -1,0 +1,44 @@
+<ion-content id="login">
+  <img style="margin-top: 100px;" class="col-8 offset-2" src="assets/images/logo.png" alt="sociobee Logo">
+  <div class="content-wrapper-center">
+    <form class="ion-padding" #loginForm="ngForm" novalidate>
+      <ion-item lines="full">
+        <ion-input [(ngModel)]="login.email" name="username" type="email"
+          placeholder="{{ 'general.email' | translate }}" #userName="ngModel" spellcheck="false" autocapitalize="off"
+          required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-input [(ngModel)]="login.password" name="password" placeholder="{{ 'general.password' | translate }}"
+          #password="ngModel" spellcheck="false" autocapitalize="off" [type]="getType()" required></ion-input>
+        <ion-icon *ngIf="isActiveToggleTextPassword" name="eye" color="success" slot="end"
+          (click)="toggleTextPassword()"></ion-icon>
+        <ion-icon *ngIf="!isActiveToggleTextPassword" name="eye-off-sharp" color="primary" slot="end"
+          (click)="toggleTextPassword()"></ion-icon>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-grid>
+          <ion-row class="ion-padding-top">
+            <ion-col>
+              <ion-button (click)="onLogin(loginForm)" size="default" color="primary" expand="block" fill="solid"
+                [disabled]="loginForm.invalid">
+                <ion-text>{{ 'general.login' | translate }}</ion-text>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-grid>
+          <ion-row class="ion-padding-top">
+            <ion-col>
+              <ion-text><small>{{ 'general.no_account' | translate }}</small></ion-text>
+              <ion-button (click)="goToRegister()" size="default" color="light" expand="block">
+                <ion-text>{{ 'general.register' | translate }}</ion-text>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>{{'general.filters' | translate}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancelFilters()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="saveFilters()">
+        <ion-icon name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <!-- <ion-list>
+    <ion-list-header mode="ios">
+      <ion-label>{{ 'general.sort_by' | translate}}</ion-label>
+    </ion-list-header>
+    <ion-segment [(ngModel)]="filter_params.sort_by" mode="ios">
+      <ion-segment-button value="most_recent">
+        <ion-label>{{ 'general.most_recent' | translate}}</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="popularity">
+        <ion-label>{{ 'general.popularity' | translate}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-list> -->
+  <ion-list>
+    <ion-list-header mode="ios">
+      <ion-label>{{ 'general.view' | translate}}</ion-label>
+    </ion-list-header>
+    <ion-radio-group [(ngModel)]="filter_params.view">
+      <ion-item>
+        <ion-label>{{ 'general.all' | translate}}</ion-label>
+        <ion-radio slot="end" value="all"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'general.active' | translate}}</ion-label>
+        <ion-radio slot="end" value="active"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'general.published' | translate}}</ion-label>
+        <ion-radio slot="end" value="published"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'general.completed' | translate}}</ion-label>
+        <ion-radio slot="end" value="completed"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+</ion-content>

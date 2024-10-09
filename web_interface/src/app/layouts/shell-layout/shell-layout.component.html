@@ -1,0 +1,97 @@
+<div>
+    <div class="header">
+        <header class="header-desktop">
+            <div class=" header-wrap row">
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-3 col-1">
+                    <!-- <div class="col-4"> -->
+                    <div class="toggle-sidebar-button">
+                        <a (click)="toggleSidebar()">
+                            <i class="fas fa-bars fa-fw"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- <div class="col-8"> -->
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-9 col-11">
+                    <div class="row justify-content-end">
+                        <div class="col-auto">
+                            <a class="header-button borders" type="button" id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user fa-fw header-icon"></i>
+                                <span class="header-username">{{user.email}}</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item item-size" (click)="logout()">{{'buttons.logout'|translate}}</a>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <a class="header-button" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-globe fa-fw header-icon"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item item-size"
+                                    (click)="changeLanguage('en')">{{'buttons.english'|translate}}</a>
+                                <a class="dropdown-item item-size"
+                                    (click)="changeLanguage('gr')">{{'buttons.greek'|translate}}</a>
+                                <a class="dropdown-item item-size"
+                                    (click)="changeLanguage('es')">{{'buttons.spanish'|translate}}</a>
+                                <a class="dropdown-item item-size"
+                                    (click)="changeLanguage('it')">{{'buttons.italian'|translate}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div>
+        <div class="sidebar-overlay" *ngIf="layoutsService.sidebarOpen.value"></div>
+        <aside class="sidebar">
+            <div class="top-container">
+                <img src="assets/images/sociobee_logo.png" alt="SDN Logo">
+                <div class="sidebar-close-button-container" (click)="closeSidebar()">
+                    <i class="fas fa-times fa-fw"></i>
+                </div>
+            </div>
+            <div class="main-menu">
+                <div class="menu-item" [routerLink]="['/dashboard']" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: false}">
+                    <i class="fas fa-home fa-fw"></i>
+                    <span class="text">{{'sidebar.dashboard'|translate}}</span>
+                </div>
+                <div class="menu-item" [routerLink]="['/campaigns']" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: false}">
+                    <i class="fas fa-route fa-fw"></i>
+                    <span class="text">{{'sidebar.campaigns'|translate}}</span>
+                </div>
+                <div class="menu-item" [routerLink]="['/hives']" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: false}">
+                    <i class="fas fa-users fa-fw"></i>
+                    <span class="text">{{'sidebar.hives'|translate}}</span>
+                </div>
+                <div class="menu-item" [routerLink]="['/explore_data']" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: false}">
+                    <i class="fas fa-database fa-fw"></i>
+                    <span class="text">{{'sidebar.explore_data'|translate}}</span>
+                </div>
+                <div class="menu-item" [routerLink]="['/training_material']" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: false}">
+                    <!-- <i class="fas fa-home fa-fw"></i> -->
+                    <i class="fas fa-graduation-cap fa-fw"></i>
+                    <span class="text">{{'sidebar.training_material'|translate}}</span>
+                </div>
+                <div class="menu-item" [routerLink]="['/settings']" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: false}">
+                    <!-- <i class="fas fa-home fa-fw"></i> -->
+                    <i class="fas fa-cog fa-fw"></i>
+                    <span class="text">{{'sidebar.settings'|translate}}</span>
+                </div>
+                <!-- <div class="menu-header">Settings</div> -->
+
+            </div>
+        </aside>
+    </div>
+    <div class="main-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="row" >
+    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3" style="margin-top: 10px;" *ngFor="let material of materials">
+        <p-card header="{{material.header}}" subheader="{{material.subheader}}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="{{material.image}}" width="290" height="220">
+            </ng-template>
+            <p class="multiline-ellipsis">{{material.description}}</p>
+            <ng-template pTemplate="footer">
+                <p-button styleClass="p-button-secondary" label="Access" (click)="openMaterial(material)"></p-button>
+            </ng-template>
+        </p-card>
+    </div>
+</div>
+

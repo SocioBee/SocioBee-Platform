@@ -1,0 +1,40 @@
+<app-toolbar [tab_name]="tab_name"></app-toolbar>
+<ion-content color="">
+    <ion-list>
+        <ion-item-divider class="list-divider">{{'general.user_info' | translate}}</ion-item-divider>
+        <ion-item lines="full">
+            <ion-label>
+                <h4>{{'general.name' | translate}}:<strong> {{user.name}} {{user.surname}}</strong> </h4>
+                <p>{{'general.user_name' | translate}}:<strong> {{user.user_name}}</strong> </p>
+                <p>{{'general.email' | translate}}:<strong> {{user.email}}</strong> </p>
+            </ion-label>
+            <ion-buttons slot="end">
+                <ion-button (click)="triggerLogout()">
+                  <ion-icon name="log-out-outline" slot="icon-only"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+        </ion-item>
+        <ion-item-divider class="list-divider">{{'general.device' | translate}}</ion-item-divider>
+        <ion-item lines="full">
+            <ion-label>{{ 'general.connected_device' | translate }}: <strong>{{selected_device_name}}</strong></ion-label>
+            <ion-button *ngIf="!has_connected_device" slot="end" (click)="openDeviceSelect()">Select</ion-button>
+            <ion-button *ngIf="has_connected_device"  slot="end" color="danger" (click)="disconnectFromDevice()">Disconnect</ion-button>
+            <ion-select #deviceSelect [hidden]="true" (ionChange)="handleDeviceSelect($event)" [(ngModel)]="selected_device_name"
+                placeholder="{{ 'general.select_device' | translate }}" slot="end">
+                <ion-select-option *ngFor="let device of available_device_list"
+                    value="{{device.name}}">{{device.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item-divider class="list-divider">{{'general.general' | translate}}</ion-item-divider>
+        <ion-item lines="full">
+            <ion-label>{{ 'general.lang' | translate }}</ion-label>
+            <ion-select aria-label="lang" (ionChange)="handleLanguageChange($event)" value="{{selected_language}}"
+                placeholder="{{ 'general.select_lang' | translate }}">
+                <ion-select-option *ngFor="let lang of available_languages"
+                    value="{{lang.value}}">{{lang.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+
+</ion-content>

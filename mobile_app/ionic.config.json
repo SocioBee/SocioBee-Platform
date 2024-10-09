@@ -1,0 +1,8 @@
+{
+  "name": "SocioBee",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

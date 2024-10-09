@@ -1,0 +1,25 @@
+<div class="explore-data-container">
+    <div class="explore-data-map">
+        <div class="timeline-container">
+            <div class="d-flex flex-row">
+                <div class="d-flex justify-content-center flex-column p-2">
+                    <label for="basic">{{ 'explorePage.from_date' | translate }}</label>
+                    <p-calendar class="p-inputtext-sm" [(ngModel)]="from_date" dateFormat="yy-mm-dd" [showTime]="true"
+                        [showIcon]="true" inputId="time"></p-calendar>
+                </div>
+                <div class="d-flex justify-content-center flex-column p-2">
+                    <label for="basic">{{ 'explorePage.to_date' | translate }}</label>
+                    <p-calendar class="p-inputtext-sm" [(ngModel)]="to_date" dateFormat="yy-mm-dd" [showTime]="true"
+                        [showIcon]="true" inputId="time"></p-calendar>
+                </div>
+                <div class="d-flex justify-content-end flex-column p-2">
+                    <button pButton pRipple type="button" label="{{ 'explorePage.run' | translate }}" class="p-button-raised p-button-info"
+                        icon="pi pi-play" iconPos="right" (click)="getExploreData()"></button>
+    
+                </div>
+            </div>
+        </div>
+        <div id="map" style="width: 100%; height: 100%">
+        </div>
+    </div>
+</div>
